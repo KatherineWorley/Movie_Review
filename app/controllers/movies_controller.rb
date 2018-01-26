@@ -52,7 +52,6 @@ class MoviesController < ApplicationController
     end
   end
 
-
   # DELETE /movies/1
   # DELETE /movies/1.json
   def destroy
