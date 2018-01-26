@@ -54,4 +54,7 @@ Rails.application.configure do
 
   #Needed for Devise Gem 
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+
+  #for ImageMagic/Paperclip
+  Paperclip.options[:command_path] = "/usr/local/bin/"
 end
