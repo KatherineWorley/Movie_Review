@@ -1,6 +1,7 @@
 class MoviesController < ApplicationController
   before_action :set_movie, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!, except: [:index, :show]
+  before_action require:
 
   def search
     if params[:search].present?
@@ -15,7 +16,7 @@ class MoviesController < ApplicationController
   end
 
   def show
-    @reviews = Review.where(movie_id: @movie.id).order("created_at DESC")
+    @reviews = Review.where(movie: @movie_id).order("created_at DESC")
 
     if @reviews.blank?
       @avg_review = 0
@@ -67,7 +68,7 @@ class MoviesController < ApplicationController
 
   private
     def set_movie
-      @movie = Movie.find(params[:id])
+      @movie = Movie.find_by_id(params[:movie_id])
     end
 
     def movie_params
