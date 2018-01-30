@@ -5,4 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :movies
+
+  #this dependency deletes reviews if and only if the user is deleted. Makes the reviews depended on the user.
+  has_many :reviews, dependent: :destroy
 end
