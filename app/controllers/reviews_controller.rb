@@ -10,7 +10,7 @@ class ReviewsController < ApplicationController
   def edit
   end
 
-  def create
+  def creates
     @review = Review.new(review_params)
     @review.user_id = current_user.id
     @review.movie_id = @movie.id
